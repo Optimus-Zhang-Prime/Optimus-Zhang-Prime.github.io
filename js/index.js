@@ -1119,7 +1119,7 @@ function renderScoreHud() {
         scoreNode.style.display = 'none';
         cubeCountNode.style.opacity = 1;
     } else {
-        scoreNode.innerText = `_____SCORE: ${state.game.score}`;
+        scoreNode.innerText = `_______SCORE: ${state.game.score}`;
         scoreNode.style.display = 'block';
         cubeCountNode.style.opacity = 0.65;
     }
