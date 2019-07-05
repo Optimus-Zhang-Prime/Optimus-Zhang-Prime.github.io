@@ -32,7 +32,7 @@ const minPointerSpeed = 60;
 const hitDampening = 0.1;
 // Backboard receives shadows and is the farthest negative Z position of entities.
 const backboardZ = -400;
-const shadowColor = '#262e36';
+const shadowColor = '#676d73';
 // How much air drag is applied to standard objects
 const airDrag = 0.022;
 const gravity = 0.3;
@@ -1115,15 +1115,15 @@ const scoreNode = $('.score-lbl');
 const cubeCountNode = $('.cube-count-lbl');
 
 function renderScoreHud() {
-    if (isCasualGame()) {
+    if (isCasualGame()) {//休闲模式
         scoreNode.style.display = 'none';
         cubeCountNode.style.opacity = 1;
     } else {
-        scoreNode.innerText = `SCORE: ${state.game.score}`;
+        scoreNode.innerText = `___SCORE: ${state.game.score}`;
         scoreNode.style.display = 'block';
         cubeCountNode.style.opacity = 0.65;
     }
-    cubeCountNode.innerText = `CUBES SMASHED: ${state.game.cubeCount}`;
+    cubeCountNode.innerText = `_________方块数: ${state.game.cubeCount}`;
 }
 
 renderScoreHud();
@@ -1232,13 +1232,6 @@ handleClick($('.play-again-btn'), () => {
 handleClick($('.menu-btn--score'), () => setActiveMenu(MENU_MAIN));
 
 
-// actions.js
-// ============================================================================
-// ============================================================================
-
-//////////////////
-// MENU ACTIONS //
-//////////////////
 
 function setActiveMenu(menu) {
     state.menus.active = menu;
@@ -1246,9 +1239,6 @@ function setActiveMenu(menu) {
 }
 
 
-/////////////////
-// HUD ACTIONS //
-/////////////////
 
 function setScore(score) {
     state.game.score = score;
@@ -1549,7 +1539,7 @@ function tick(width, height, simTime, simSpeed, lag) {
 
     // Animate fragments and remove when offscreen.
     const fragBackboardZ = backboardZ + fragRadius;
-    // Allow fragments to move off-screen to sides for a while, since shadows are still visible.
+    // 由于阴影仍然可见，因此允许碎片在屏幕外移动一段时间。
     const fragLeftBound = -width;
     const fragRightBound = width;
 
